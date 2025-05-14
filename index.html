@@ -1,0 +1,266 @@
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>jsOri1</title>
+<!--    <link href="menu.css" rel="stylesheet">-->
+<!--    <link href="iskra1080debuger.css" rel="stylesheet">-->
+<!--    <style>-->
+<!--        .button {-->
+<!--            text-align: left;-->
+<!--            margin-left: 8px;-->
+<!--        }-->
+<!--        .button > span {-->
+<!--            display: table-cell;-->
+<!--        }-->
+<!--        .button > div {-->
+<!--            display: table-cell;-->
+<!--            border: 2px solid white;-->
+<!--            border-radius: 4px;-->
+<!--            cursor: pointer;-->
+<!--            background: #C0C0C0;-->
+<!--            font-family: Arial;-->
+<!--            font-size: 11px;-->
+<!--            min-width: 32px;-->
+<!--            width: 32px;-->
+<!--            min-height: 40px;-->
+<!--            height: 40px;-->
+<!--            text-align: center;-->
+<!--            padding: 2px;-->
+<!--            vertical-align: middle;-->
+<!--        }-->
+<!--        .led {-->
+<!--            display: table-cell;-->
+<!--            vertical-align: middle;-->
+<!--            text-align: center;-->
+<!--            font-family: Arial;-->
+<!--            font-size: 11px;-->
+<!--            min-width: 40px;-->
+<!--        }-->
+<!--        .led > div {-->
+<!--            margin:3 auto;-->
+<!--            text-align: center;-->
+<!--            border-radius: 16px;-->
+<!--            background: #CCC;-->
+<!--            width: 16px;-->
+<!--            height: 16px;-->
+<!--            box-shadow: inset -1px -1px 8px #888;-->
+<!--        }-->
+<!--        .ledactive > div {-->
+<!--            background: #F88;-->
+<!--            box-shadow: inset -1px -1px 8px #800;-->
+<!--        }-->
+<!--        #iskra1080canvas {-->
+<!--            image-rendering: optimizeSpeed;             /* Older versions of FF          */-->
+<!--            image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */-->
+<!--            image-rendering: -webkit-optimize-contrast; /* Safari                        */-->
+<!--            image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */-->
+<!--            image-rendering: pixelated;                 /* Awesome future-browsers       */-->
+<!--            -ms-interpolation-mode: nearest-neighbor;   /* IE                            */-->
+<!--            width: 768px;-->
+<!--            height: 512px;-->
+<!--            border: 1px solid black;-->
+<!--        }-->
+<!--        body {-->
+<!--            -webkit-user-select: none;-->
+<!--            -moz-user-select: none;-->
+<!--            -ms-user-select: none;-->
+<!--            -o-user-select: none;-->
+<!--            user-select: none;-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body>
+<!--<h1>Эмулятор Искра 1080 Тарту</h1>-->
+
+<!--<div id="debuger"></div>-->
+
+<!--<ul class="menu"  style="width:768px">-->
+<!--    <li><div>Перезагрузка</div>-->
+<!--        <ul>-->
+<!--            <li id="powerResetButton"><div>Бейсик</div></li>-->
+<!--            <li id="powerResetCpmButton"><div>Локальная сеть</div></li>-->
+<!--            <li id="powerResetExtButton"><div>Плата расширения</div></li>-->
+<!--            <hr>-->
+<!--            <li><div>Программа с сервера</div>-->
+<!--                <ul id="menuLoad">-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </li>-->
+<!--    <li><div>Загрузить диск</div>-->
+<!--        <ul>-->
+<!--            <li><div>Диск A:</div>-->
+<!--                <ul>-->
+<!--                    <li id="loadFloppyMenuItem0"><div>Загрузить из файла</div></li>-->
+<!--                    <li><div>Загрузкить с сервера</div>-->
+<!--                        <ul id="menuFloppy0"></ul>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--            <li><div>Диск B:</div>-->
+<!--                <ul>-->
+<!--                    <li id="loadFloppyMenuItem1"><div>Загрузить из файла</div></li>-->
+<!--                    <li><div>Загрузкить с сервера</div>-->
+<!--                        <ul id="menuFloppy1"></ul>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </li>-->
+<!--    <li><div>Отладка</div>-->
+<!--        <ul>-->
+<!--            <li id="debugerStop"><div>Остановить программу</div></li>-->
+<!--        </ul>-->
+<!--    </li>-->
+<!--</ul>-->
+
+<script src="src/ori1.js" type="application/javascript"></script>
+<script src="src/keyboard.js" type="application/javascript"></script>
+<script src="src/video.js" type="application/javascript"></script>
+<script src="src/i8080.js" type="application/javascript"></script>
+
+
+<script src="rom/m1rom.js" type="application/javascript"></script>
+
+<!--<script src="iskra1080rom.js" type="application/javascript"></script>-->
+<!--<script src="filelist.js" type="application/javascript"></script>-->
+<!--<script src="floppylist.js" type="application/javascript"></script>-->
+<!--<script src="menu.js" type="application/javascript"></script>-->
+<!--<script src="i8080.js" type="application/javascript"></script>-->
+<!--<script src="iskra1080debuger.js" type="application/javascript"></script>-->
+<!--<script src="iskra1080floppy.js" type="application/javascript"></script>-->
+<!--<script src="iskra1080keyboard.js" type="application/javascript"></script>-->
+<!--<script src="iskra1080video.js" type="application/javascript"></script>-->
+<!--<script src="iskra1080extboot.js" type="application/javascript"></script>-->
+<!--<script src="iskra1080extrom.js" type="application/javascript"></script>-->
+<!--<script src="iskra1080ext.js" type="application/javascript"></script>-->
+<!--<script src="iskra1080emu.js" type="application/javascript"></script>-->
+<!--<script src="iskra1080floppyController.js" type="application/javascript"></script>-->
+
+<!--<center style="width:770px">-->
+
+<canvas id="iskra1080canvas"></canvas><br>
+<hr style="margin-left: 0; width: 400px; border: 1px solid black;">
+
+
+
+<div>
+    <input type='button' value="Reset" onClick='window.location.reload()'>
+    <!--	<input type='button' id='btnLoad' value='Load ""' onclick='uploadLocalFile();'>-->
+    <!--	<input type='file' id='fileinput'>-->
+</div>
+
+<!--    <div class="button" style="margin-top:8px;margin-bottom:8px">-->
+<!--        <span style="min-width:636px"></span>-->
+<!--        <span id="led0" class="led"><div></div>Caps</span>-->
+<!--        <span id="led1" class="led"><div></div>Num</span>-->
+<!--        <div id="resetButton" style="background:#FFC0C0">RST</div>-->
+<!--    </div>-->
+
+<!--    <div class="button">-->
+<!--        <span style="min-width:24px"></span>-->
+<!--        <div id="key48">!<br>1</div>-->
+<!--        <div id="key40">"<br>2</div>-->
+<!--        <div id="key32">#<br>3</div>-->
+<!--        <div id="key16">¤<br>4</div>-->
+<!--        <div id="key8">%<br>5</div>-->
+<!--        <div id="key0">&<br>6</div>-->
+<!--        <div id="key4">'<br>7</div>-->
+<!--        <div id="key12">(<br>8</div>-->
+<!--        <div id="key20">)<br>9</div>-->
+<!--        <div id="key36">_<br>0</div>-->
+<!--        <div id="key44">=<br>-</div>-->
+<!--        <div id="key52">~<br>^</div>-->
+<!--        <div id="key68">|<br>\</div>-->
+<!--        <div id="key60">RUB</div>-->
+<!--        <span style="min-width:52px"></span>-->
+<!--        <div id="key74">F<sub>1</sub></div>-->
+<!--        <div id="key75">F<sub>2</sub></div>-->
+<!--        <div id="key72">F<sub>3</sub></div>-->
+<!--    </div>-->
+
+<!--    <div class="button">-->
+<!--        <div id="key66">TAB</div>-->
+<!--        <div id="key65">Й<br>q</div>-->
+<!--        <div id="key57">Ц<br>w</div>-->
+<!--        <div id="key41">У<br>e</div>-->
+<!--        <div id="key33">К<br>r</div>-->
+<!--        <div id="key17">Е<br>t</div>-->
+<!--        <div id="key9" >Н<br>y</div>-->
+<!--        <div id="key1" >Г<br>u</div>-->
+<!--        <div id="key5" >Ш<br>i</div>-->
+<!--        <div id="key13">Щ<br>o</div>-->
+<!--        <div id="key21">З<br>p</div>-->
+<!--        <div id="key37">Х<br>{</div>-->
+<!--        <div id="key45">Ъ<br>}</div>-->
+<!--        <div id="key53">?<br>/</div>-->
+<!--        <div id="key76">ESC</div>-->
+<!--        <span style="min-width:36px"></span>-->
+<!--        <div id="key61">7<br>&nbsp;</div>-->
+<!--        <div id="key69">8<br>↑</div>-->
+<!--        <div id="key77">9<br>&nbsp;</div>-->
+<!--    </div>-->
+
+<!--    <div class="button">-->
+<!--        <span style="min-width:12px"></span>-->
+<!--        <div id="key67">CTR</div>-->
+<!--        <div id="key50">Ф<br>a</div>-->
+<!--        <div id="key58">Ы<br>s</div>-->
+<!--        <div id="key42">В<br>d</div>-->
+<!--        <div id="key34">А<br>f</div>-->
+<!--        <div id="key18">П<br>g</div>-->
+<!--        <div id="key10">Р<br>h</div>-->
+<!--        <div id="key2">О<br>j</div>-->
+<!--        <div id="key6">Л<br>k</div>-->
+<!--        <div id="key14">Д<br>l</div>-->
+<!--        <div id="key22">Ж<br>[</div>-->
+<!--        <div id="key38">Э<br>]</div>-->
+<!--        <div id="key46">*<br>:</div>-->
+<!--        <div id="key54">+<br>;</div>-->
+<!--        <div id="key64">ВК</div>-->
+<!--        <span style="min-width:24px"></span>-->
+<!--        <div id="key62">4<br>←</div>-->
+<!--        <div id="key70">5</div>-->
+<!--        <div id="key78">6<br>→</div>-->
+<!--    </div>-->
+
+<!--    <div class="button">-->
+<!--        <span style="min-width:24px"></span>-->
+<!--        <div id="key27">↕</div>-->
+<!--        <div id="key51">Я<br>z</div>-->
+<!--        <div id="key59">Ч<br>x</div>-->
+<!--        <div id="key43">С<br>c</div>-->
+<!--        <div id="key35">М<br>v</div>-->
+<!--        <div id="key19">И<br>b</div>-->
+<!--        <div id="key11">Т<br>n</div>-->
+<!--        <div id="key3">Ь<br>m</div>-->
+<!--        <div id="key7">Б<br>`</div>-->
+<!--        <div id="key15">Ю<br>@</div>-->
+<!--        <div id="key23">Ё<br>&nbsp;</div>-->
+<!--        <div id="key39">&lt;<br>,</div>-->
+<!--        <div id="key47">><br>.</div>-->
+<!--        <div id="key12">↕</div>-->
+<!--        <span style="min-width:52px"></span>-->
+<!--        <div id="key63">1<br>&nbsp;</div>-->
+<!--        <div id="key71">2<br>↓</div>-->
+<!--        <div id="key79">3<br>&nbsp;</div>-->
+<!--    </div>-->
+
+<!--    <div class="button">-->
+<!--        <span style="min-width:36px"></span>-->
+<!--        <div id="key30">CAP</div>-->
+<!--        <div id="key24">RUS</div>-->
+<!--        <div id="key31" style="min-width:284px">&nbsp;</div>-->
+<!--        <div id="key25">LAT</div>-->
+<!--        <div id="key28">NUM</div>-->
+<!--        <div id="key29">DEL</div>-->
+<!--        <div id="key26">COP</div>-->
+<!--        <span style="min-width:108px"></span>-->
+<!--        <div id="key55">0</div>-->
+<!--        <div id="key49">.</div>-->
+<!--    </div>-->
+
+<!--</center>-->
+
+</body>
+</html>
