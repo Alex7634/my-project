@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let mem_read = function(addr, flags) {
         let result;
-        if ((page & 0x80) === 0)        // включен диспечер памяти
+        if ((page & 0x80) === 0  && my_memory.bank !== 7)        // включен диспечер памяти
             if (addr < 0x4000) {
                 result = memory[(page >> 2) & 0x03][(addr & 0x3fff) | ((page << 14) & 0xc000)]
                 return result;
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     let mem_write = function(addr, byte) {
-        if ((page & 0x80) === 0)        // включен диспечер памяти
+        if ((page & 0x80) === 0 && my_memory.bank !== 7)        // включен диспечер памяти
             if (addr < 0x4000) {
                 memory[(page >> 2) & 0x03][(addr & 0x3fff) | ((page << 14) & 0xc000)] = byte;
                 return
